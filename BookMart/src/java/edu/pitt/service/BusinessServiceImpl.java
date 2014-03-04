@@ -4,6 +4,7 @@
  */
 package edu.pitt.service;
 
+import edu.pitt.dao.NewInterface;
 import edu.pitt.dao.impl.CategoryDaoImpl;
 import edu.pitt.domain.Category;
 import java.util.List;
@@ -13,17 +14,17 @@ import java.util.List;
  * @author jeffwan
  */
 public class BusinessServiceImpl {
-    private CategoryDaoImpl categoryDao = new CategoryDaoImpl();
+    private NewInterface categoryDao = new CategoryDaoImpl();
             
     public void addCategory (Category category) {
         categoryDao.add(category);
     }
     
-    public Category findCategory (String id) {
+    public Object findCategory (String id) {
         return categoryDao.find(id);
     }
     
-    public List<Category> getAllCategory() {
+    public List<Object> getAllCategory() {
         return categoryDao.getAll();
     }
     

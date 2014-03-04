@@ -1,13 +1,13 @@
-package edu.pitt.dao.impl;
-
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
+package edu.pitt.dao.impl;
 
 import edu.pitt.dao.NewInterface;
-import edu.pitt.domain.Category;
+import edu.pitt.domain.Book;
 import edu.pitt.utils.JdbcUtils;
 import java.util.List;
 import org.apache.commons.dbutils.QueryRunner;
@@ -16,48 +16,46 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 /**
  *
- * @author jeffwan
+ * @author huanwang
  */
-public class CategoryDaoImpl implements NewInterface {
-    
-    @Override
-            public void add(Object object) {
+public class BookDaoImpl implements NewInterface {
 
-        try {
-            Category category= (Category) object;
+    @Override
+    public void add(Object object) {
+          try {
+            Book book= (Book) object;
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "insert into category (id, name, description) values(?,?,?)";
-            Object[] params = {category.getId(),category.getName(),category.getDescription()};
+            String sql = "insert into book (id, name, author, publisher, publishDate, price, coverId, categoryId) values(?,?,?,?,?,?,?,?)";
+            Object[] params = {book.getId(),book.getName(),book.getAuthor(),book.getPublisher(), book.getPublishDate(), book.getPrice(), book.getCoverId(), book.getCategoryId()};
             runner.update(sql, params);
                         
         } catch(Exception e) {
             throw new RuntimeException(e);
         }
     }
-    
+
     @Override
     public Object find(String id) {
-        try {
+         try {
           
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "select * from category where id=?";
+            String sql = "select * from book where id=?";
             
-            return (Category)runner.query(sql, id, new BeanHandler(Category.class));
+            return (Book)runner.query(sql, id, new BeanHandler(Book.class));
            
         } catch(Exception e) {
             throw new RuntimeException(e);
         }
         
-    }    
-    
-    
+    }
+
     @Override
     public List<Object> getAll() {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "select * from category";
+            String sql = "select * from book";
             
-            return (List<Object>)runner.query(sql, new BeanListHandler(Category.class));       
+            return (List<Object>)runner.query(sql, new BeanListHandler(Book.class));       
         } catch (Exception e) {
             throw new RuntimeException(e);
                    
@@ -65,7 +63,5 @@ public class CategoryDaoImpl implements NewInterface {
     }
 
 
-    
-    
     
 }

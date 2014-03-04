@@ -4,7 +4,6 @@
  */
 package edu.pitt.dao;
 
-import edu.pitt.domain.Category;
 import java.util.List;
 
 /**
@@ -13,10 +12,10 @@ import java.util.List;
  */
 public interface NewInterface {
 
-    void add(Category category);
+    void add(Object object);
 
-    Category find(String id);
+    Object find(String id);
 
-    List<Category> getAll();
+    List<Object> getAll();
     
 }
