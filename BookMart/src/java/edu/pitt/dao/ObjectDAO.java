@@ -7,15 +7,16 @@ package edu.pitt.dao;
 import java.util.List;
 
 /**
- *
- * @author jeffwan
+ * 
+ * @author Liu
+ * @param <E> 
  */
-public interface NewInterface {
+public interface ObjectDAO<E> {
 
-    void add(Object object);
+    void add(E e);
 
-    Object find(String id);
+    E find(String id);
 
-    List<Object> getAll();
+    List<E> getAll();
     
 }

@@ -6,7 +6,7 @@ package edu.pitt.dao.impl;
  */
 
 
-import edu.pitt.dao.NewInterface;
+import edu.pitt.dao.ObjectDAO;
 import edu.pitt.domain.Category;
 import edu.pitt.utils.JdbcUtils;
 import java.util.List;
@@ -18,13 +18,12 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
  *
  * @author jeffwan
  */
-public class CategoryDaoImpl implements NewInterface {
+public class CategoryDaoImpl implements ObjectDAO<Category> {
     
-    @Override
-            public void add(Object object) {
+            @Override
+            public void add(Category category) {
 
         try {
-            Category category= (Category) object;
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
             String sql = "insert into category (id, name, description) values(?,?,?)";
             Object[] params = {category.getId(),category.getName(),category.getDescription()};
@@ -36,7 +35,7 @@ public class CategoryDaoImpl implements NewInterface {
     }
     
     @Override
-    public Object find(String id) {
+    public Category find(String id) {
         try {
           
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
@@ -50,14 +49,13 @@ public class CategoryDaoImpl implements NewInterface {
         
     }    
     
-    
     @Override
-    public List<Object> getAll() {
+    public List<Category> getAll() {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
             String sql = "select * from category";
             
-            return (List<Object>)runner.query(sql, new BeanListHandler(Category.class));       
+            return (List<Category>)runner.query(sql, new BeanListHandler(Category.class));       
         } catch (Exception e) {
             throw new RuntimeException(e);
                    

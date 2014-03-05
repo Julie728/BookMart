@@ -6,7 +6,7 @@
 
 package edu.pitt.dao.impl;
 
-import edu.pitt.dao.NewInterface;
+import edu.pitt.dao.ObjectDAO;
 import edu.pitt.domain.Book;
 import edu.pitt.utils.JdbcUtils;
 import java.util.List;
@@ -18,12 +18,11 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
  *
  * @author huanwang
  */
-public class BookDaoImpl implements NewInterface {
+public class BookDaoImpl implements ObjectDAO<Book> {
 
     @Override
-    public void add(Object object) {
+    public void add(Book book) {
           try {
-            Book book= (Book) object;
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
             String sql = "insert into book (id, name, author, publisher, publishDate, price, coverId, categoryId) values(?,?,?,?,?,?,?,?)";
             Object[] params = {book.getId(),book.getName(),book.getAuthor(),book.getPublisher(), book.getPublishDate(), book.getPrice(), book.getCoverId(), book.getCategoryId()};
@@ -35,7 +34,7 @@ public class BookDaoImpl implements NewInterface {
     }
 
     @Override
-    public Object find(String id) {
+    public Book find(String id) {
          try {
           
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
@@ -50,12 +49,12 @@ public class BookDaoImpl implements NewInterface {
     }
 
     @Override
-    public List<Object> getAll() {
+    public List<Book> getAll() {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
             String sql = "select * from book";
             
-            return (List<Object>)runner.query(sql, new BeanListHandler(Book.class));       
+            return (List<Book>)runner.query(sql, new BeanListHandler(Book.class));       
         } catch (Exception e) {
             throw new RuntimeException(e);
                    
