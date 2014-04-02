@@ -16,6 +16,9 @@
         <h4>Category Management</h4>
         <a href="${pageContext.request.contextPath }/admin/addcategory.jsp" target="body">Add Category</a><br/>
         <a href="${pageContext.request.contextPath }/admin/CategoryServlet?method=listall" target="body">List Category</a>
+        <h4>Book Management</h4>
+        <a href="${pageContext.request.contextPath }/admin/addbook.jsp" target="body">Add Category</a><br/>
+        <a href="${pageContext.request.contextPath }/admin/BookServlet?method=listall" target="body">List Category</a>
         
         
     </body>
