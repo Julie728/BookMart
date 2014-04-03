@@ -38,6 +38,10 @@ public class Category {
         this.description = description;
     }
     
-    
+    public String[] getAllCategory(){
+        //get all category name
+        String[] categorylist = new String[10];
+        return categorylist;
+    }
     
 }
