@@ -35,7 +35,7 @@ public class CategoryDaoImpl implements ObjectDAO<Category> {
     }
     
     @Override
-    public Category find(String id) {
+    public Category find(int id) {
         try {
           
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
@@ -70,10 +70,5 @@ public class CategoryDaoImpl implements ObjectDAO<Category> {
     @Override
     public void update(Category e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
-    
-    
-    
+    }   
 }
