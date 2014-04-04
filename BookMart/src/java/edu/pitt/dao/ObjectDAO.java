@@ -19,4 +19,9 @@ public interface ObjectDAO<E> {
 
     List<E> getAll();
     
+    void delete(E e);
+    
+    void update(E e);
+    
+    
 }

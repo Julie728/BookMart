@@ -12,6 +12,10 @@
         <servlet-name>BookServlet</servlet-name>
         <servlet-class>edu.pitt.web.client.BookServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <servlet-class>edu.pitt.web.client.RegisterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CategoryServlet</servlet-name>
         <url-pattern>/admin/CategoryServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>BookServlet</servlet-name>
         <url-pattern>/BookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

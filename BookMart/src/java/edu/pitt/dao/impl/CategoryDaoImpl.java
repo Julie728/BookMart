@@ -62,6 +62,16 @@ public class CategoryDaoImpl implements ObjectDAO<Category> {
         }
     }
 
+    @Override
+    public void delete(Category e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void update(Category e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
     
     

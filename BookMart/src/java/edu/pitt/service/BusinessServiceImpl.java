@@ -44,5 +44,23 @@ public class BusinessServiceImpl {
     public List<Book> getAllBook() {
         return (List<Book>)bookDao.getAll();
     }
+
+    public void updateBook(){
+        
+    }
+    
+    public void deleteBook(){
+        
+    }
+    
+    public void updateCategory(){
+        
+    }
+    
+    public void deleteCategory(){
+        
+    }
+    
+    
     
 }
