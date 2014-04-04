@@ -67,8 +67,9 @@ public class UserDaoImpl implements ObjectDAO<User> {
     public void delete(User user) {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "DELETE FROM Users WHERE userID = '" + user.getUserID() + "';";
-            runner.update(sql);
+            String sql = "DELETE FROM Users WHERE userID = ?;";
+            Object[] params = {user.getUserID()};
+            runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
 
@@ -80,8 +81,8 @@ public class UserDaoImpl implements ObjectDAO<User> {
     public void update(User user) {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "update Users set userID=?, userName=?, password=?, type=?";
-            Object[] params = {user.getUserID(), user.getUserName(), user.getPassword(), user.getType()};
+            String sql = "update Users set userName=?, password=?, type=? where userID=?";
+            Object[] params = {user.getUserName(), user.getPassword(), user.getType(),user.getUserID()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
