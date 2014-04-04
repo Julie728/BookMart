@@ -12,4 +12,8 @@ package edu.pitt.dao.impl;
  */
 public class UserDaoImpl {
     
+    /**
+     * Just a try
+     */
+    
 }
