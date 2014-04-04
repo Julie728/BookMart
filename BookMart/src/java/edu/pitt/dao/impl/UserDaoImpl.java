@@ -7,9 +7,10 @@
 package edu.pitt.dao.impl;
 
 /**
- *
+ * User Dao Implementation class
  * @author huanwang
+ * @version Apr 3. 2014
  */
 public class UserDaoImpl {
-    
+   
 }
