@@ -15,7 +15,7 @@ public interface ObjectDAO<E> {
 
     void add(E e);
 
-    E find(String id);
+    E find(int id);
 
     List<E> getAll();
     
