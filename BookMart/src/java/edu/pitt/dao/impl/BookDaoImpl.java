@@ -34,7 +34,7 @@ public class BookDaoImpl implements ObjectDAO<Book> {
     }
 
     @Override
-    public Book find(String id) {
+    public Book find(int id) {
          try {
           
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());

@@ -34,7 +34,7 @@ public class OrderDaoImpl implements ObjectDAO<Order> {
     }
 
     @Override
-    public Order find(String orderId) {
+    public Order find(int orderId) {
         try {
 
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());

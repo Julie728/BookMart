@@ -35,7 +35,7 @@ public class CategoryDaoImpl implements ObjectDAO<Category> {
     }
     
     @Override
-    public Category find(String id) {
+    public Category find(int id) {
         try {
           
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());

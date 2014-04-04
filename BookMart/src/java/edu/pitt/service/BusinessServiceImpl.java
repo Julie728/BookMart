@@ -24,7 +24,7 @@ public class BusinessServiceImpl {
         categoryDao.add(category);
     }
     
-    public Category findCategory (String id) {
+    public Category findCategory (int id) {
         return (Category)categoryDao.find(id);
     }
     
@@ -37,7 +37,7 @@ public class BusinessServiceImpl {
         bookDao.add(book);
     }
     
-    public Book findBook (String id) {
+    public Book findBook (int id) {
         return (Book)bookDao.find(id);
     }
     
