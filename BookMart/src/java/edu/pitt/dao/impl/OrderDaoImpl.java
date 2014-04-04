@@ -18,7 +18,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
  *
  * @author Liu
  */
-public class OrderDaoIpl implements ObjectDAO<Order> {
+public class OrderDaoImpl implements ObjectDAO<Order> {
 
     @Override
     public void add(Order order) {
