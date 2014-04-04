@@ -19,6 +19,7 @@ public class BusinessServiceImpl {
     private ObjectDAO categoryDao = new CategoryDaoImpl();
     private ObjectDAO bookDao = new BookDaoImpl();
     private ObjectDAO orderDao = new OrderDaoImpl();
+    private ObjectDAO userDao = new UserDaoImpl();
 
     public void addCategory(Category category) {
         categoryDao.add(category);
@@ -76,7 +77,28 @@ public class BusinessServiceImpl {
         orderDao.delete(order);
     }
 
-   public void updateOrder(Order order) {
+    public void updateOrder(Order order) {
         orderDao.update(order);
-}
+    }
+
+    public void addUser(User user) {
+        userDao.add(user);
+    }
+
+    public User findUser(int id) {
+        return (User) userDao.find(id);
+    }
+
+    public List<User> getAllUsers() {
+        return (List<User>) userDao.getAll();
+    }
+
+    public void deleteUser(User user) {
+        userDao.delete(user);
+    }
+
+    public void updateUser(User user) {
+        userDao.update(user);
+    }
+
 }
