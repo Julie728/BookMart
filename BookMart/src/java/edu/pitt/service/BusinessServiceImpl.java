@@ -45,20 +45,20 @@ public class BusinessServiceImpl {
         return (List<Book>) bookDao.getAll();
     }
 
-    public void updateBook() {
-
+    public void updateBook(Book book) {
+        bookDao.update(book);
     }
 
-    public void deleteBook() {
-
+    public void deleteBook(Book book) {
+        bookDao.delete(book);
     }
 
-    public void updateCategory() {
-
+    public void updateCategory(Category category) {
+        categoryDao.update(category);
     }
 
-    public void deleteCategory() {
-
+    public void deleteCategory(Category category) {
+        categoryDao.delete(category);
     }
 
     public void addOrder(Order order) {

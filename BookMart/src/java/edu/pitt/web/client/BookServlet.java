@@ -52,7 +52,7 @@ public class BookServlet extends HttpServlet {
         }
         
         if ("listall".equals(method)) {
-            listadd(request, response);
+            listall(request, response);
             return;
         }
     }
@@ -85,7 +85,6 @@ public class BookServlet extends HttpServlet {
             
             
             Book book = new Book();
-            book.setId(WebUtils.makeID());
             book.setName(name);
             book.setAuthor(author);
             book.setPublisher(publisher);
@@ -112,12 +111,14 @@ public class BookServlet extends HttpServlet {
      * set the request attribute books
      * return the book list
      */
-    private void listadd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void listall(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BusinessServiceImpl service = new BusinessServiceImpl();
         List<Book> list = service.getAllBook();
         request.setAttribute("books", list);
         request.getRequestDispatcher("/admin/listBook.jsp").forward(request, response);
     }
+    
+    
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
