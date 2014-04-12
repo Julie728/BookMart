@@ -17,7 +17,7 @@ package edu.pitt.domain;
 import java.util.Date;
 
 public class Book{
-    private String id;
+    private int id;
     private String name;
     private String author;
     private String publisher;
@@ -44,14 +44,14 @@ public class Book{
      * get book id
      * @return 
      */
-    public String getId() {
+    public int getId() {
         return id;
     }
     /**
      * set book id
      * @param id 
      */
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
     /**

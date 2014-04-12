@@ -40,12 +40,11 @@ public class CategoryServlet extends HttpServlet {
     private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         try {
-            String name = request.getParameter("name");
+            String categoryName = request.getParameter("categoryName");
             String description = request.getParameter("description");
             
             Category category = new Category();
-            category.setId(WebUtils.makeID());
-            category.setName(name);
+            category.setCategoryName(categoryName);
             category.setDescription(description);
             
             BusinessServiceImpl service = new BusinessServiceImpl();

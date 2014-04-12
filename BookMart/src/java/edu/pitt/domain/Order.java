@@ -6,26 +6,26 @@ import java.util.Date;
  * @author Liu
  */
 public class Order {
-    private int orderId;
-    private int userId;
+    private int orderID;
+    private int userID;
     private Date date;
     private Double amount;
     private String purchasedBooks;
 
-    public int getOrderId() {
-        return orderId;
+    public int getOrderID() {
+        return orderID;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getUserID() {
+        return userID;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public Date getDate() {
@@ -40,8 +40,8 @@ public class Order {
         return amount;
     }
 
-    public void setAmount(Double amountDouble) {
-        this.amount = amountDouble;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 
     public String getPurchasedBooks() {
@@ -51,5 +51,7 @@ public class Order {
     public void setPurchasedBooks(String purchasedBooks) {
         this.purchasedBooks = purchasedBooks;
     }
+
+    
    
 }

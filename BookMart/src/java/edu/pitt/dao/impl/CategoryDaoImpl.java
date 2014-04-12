@@ -26,8 +26,8 @@ public class CategoryDaoImpl implements ObjectDAO<Category> {
 
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "insert into category (categoryID, name, description) values(?,?,?)";
-            Object[] params = {category.getId(), category.getName(), category.getDescription()};
+            String sql = "insert into category (categoryName, description) values(?,?)";
+            Object[] params = {category.getCategoryName(), category.getDescription()};
             runner.update(sql, params);
 
         } catch (Exception e) {
@@ -68,7 +68,7 @@ public class CategoryDaoImpl implements ObjectDAO<Category> {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
             String sql = "delete from category where categoryID=?";
-            Object[] params = {category.getId()};
+            Object[] params = {category.getCategoryID()};
             runner.update(sql, params);
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,8 +79,8 @@ public class CategoryDaoImpl implements ObjectDAO<Category> {
     public void update(Category category) {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "UPDATE category SET name = ?, description = ? WHERE categoryID=?;";
-            Object[] params = {category.getName(), category.getDescription(), category.getId()};
+            String sql = "UPDATE category SET categoryName = ?, description = ? WHERE categoryID=?;";
+            Object[] params = {category.getCategoryName(), category.getDescription(), category.getCategoryID()};
             runner.update(sql, params);
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDaoImpl.class.getName()).log(Level.SEVERE, null, ex);

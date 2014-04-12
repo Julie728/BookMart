@@ -26,8 +26,8 @@ public class OrderDaoImpl implements ObjectDAO<Order> {
 
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "INSERT  INTO Orders (orderId, userId, date, amount, purchasedBooks) VALUES(?,?,?,?,?)";
-            Object[] params = {order.getOrderId(), order.getUserId(), order.getDate(), order.getAmount(), order.getPurchasedBooks()};
+            String sql = "INSERT  INTO Orders (userId, date, amount, purchasedBooks) VALUES(?,?,?,?)";
+            Object[] params = {order.getUserID(), order.getDate(), order.getAmount(), order.getPurchasedBooks()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -79,7 +79,7 @@ public class OrderDaoImpl implements ObjectDAO<Order> {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
             String sql = "delete from Orders where orderId=?";
-            Object[] params = {order.getOrderId()};
+            Object[] params = {order.getOrderID()};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -98,7 +98,7 @@ public class OrderDaoImpl implements ObjectDAO<Order> {
         String sql = "UPDATE Orders "
                 + " SET  amount =?,  purchasedBooks = ?"
                 + " WHERE orderId=?";
-        Object[] params = {order.getAmount(), order.getPurchasedBooks(), order.getOrderId()};
+        Object[] params = {order.getAmount(), order.getPurchasedBooks(), order.getOrderID()};
         runner.update(sql, params);
     }
     catch (Exception e ) {

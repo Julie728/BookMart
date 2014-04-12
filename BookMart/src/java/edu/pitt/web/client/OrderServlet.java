@@ -66,14 +66,14 @@ public class OrderServlet extends HttpServlet {
         try {
             BusinessServiceImpl service = new BusinessServiceImpl();
             Book book;
-            int userId; // = Integer.parseInt(request.getParameter("userId"));
+            int userID; // = Integer.parseInt(request.getParameter("userId"));
             String purchasedBooks = "";
             Date date = new Date();
             Double amount = 0.00;
             HttpSession session = request.getSession(true);
             ArrayList<Book> bookList = (ArrayList<Book>) session.getAttribute("bookList");
             User authenticatedUser = (User) session.getAttribute("authenticatedUser");
-            userId = authenticatedUser.getUserID();
+            userID = authenticatedUser.getUserID();
             if (bookList == null) {
                 //if shopping cart is empty, cannot place order
                 request.setAttribute("message", "Shopping cart is empty!");
@@ -91,7 +91,7 @@ public class OrderServlet extends HttpServlet {
             }
 
             Order order = new Order();
-            order.setUserId(userId);
+            order.setUserID(userID);
             order.setDate(date);
             order.setAmount(amount);
             order.setPurchasedBooks(purchasedBooks);
@@ -115,9 +115,9 @@ public class OrderServlet extends HttpServlet {
     private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            int orderId = Integer.parseInt(request.getParameter("orderId"));
+            int orderID = Integer.parseInt(request.getParameter("orderID"));
             BusinessServiceImpl service = new BusinessServiceImpl();
-            Order order = service.findOrder(orderId);
+            Order order = service.findOrder(orderID);
             service.deleteOrder(order);
 
             request.setAttribute("message", "Delete order successfully!");
@@ -133,7 +133,7 @@ public class OrderServlet extends HttpServlet {
     private void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            int orderId = Integer.parseInt(request.getParameter("orderId"));
+            int orderID = Integer.parseInt(request.getParameter("orderID"));
             Date date = new Date();
             Double amount = Double.parseDouble(request.getParameter("amount"));
             String purchasedBooks = request.getParameter("purchasedBooks");
@@ -152,7 +152,6 @@ public class OrderServlet extends HttpServlet {
         }
 
         request.getRequestDispatcher("/message.jsp").forward(request, response);
-
     }
 
     @Override
