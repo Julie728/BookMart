@@ -1,12 +1,9 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package edu.pitt.domain;
-
-import edu.pitt.dao.impl.CategoryDaoImpl;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -14,41 +11,35 @@ import java.util.List;
  */
 public class Category {
     
-    private String id;
-    private String name;
+    private int categoryID;
+    private String categoryName;
     private String description;
 
-    public String getId() {
-        return id;
+    public int getCategoryID() {
+        return categoryID;
     }
 
-    public String getName() {
-        return name;
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
+
     
-    public List<Category> getAllCategory(){
-        //get all category name
-        CategoryDaoImpl categoryDao = new CategoryDaoImpl();
-        
-        List<Category> categorylist = categoryDao.getAll();
-        
-        return categorylist;
-    }
     
 }
+

@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -40,14 +41,11 @@ public class CategoryServlet extends HttpServlet {
     private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         try {
-            String name = request.getParameter("name");
+            String categoryName = request.getParameter("categoryName");
             String description = request.getParameter("description");
             
-            System.out.println(name);
-            System.out.println(description);
-            
             Category category = new Category();
-            category.setName(name);
+            category.setCategoryName(categoryName);
             category.setDescription(description);
             
             BusinessServiceImpl service = new BusinessServiceImpl();
