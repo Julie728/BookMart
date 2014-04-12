@@ -34,7 +34,7 @@
         </table>    
 
 
-        <form name= "shoppingCartForm" id = "shoppingCartForm" method="post" action ="OrderServlet" >
+        <form name= "shoppingCartForm" id = "shoppingCartForm" method="post" action ="OrderServlet?method=add" >
             <input type = "submit" value = "Place Order"  id = "btnSubmit">
         </form>
         
