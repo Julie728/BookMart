@@ -17,56 +17,56 @@ package edu.pitt.domain;
 import java.util.Date;
 
 public class Book{
-    private String id;
-    private String name;
+    private int bookID;
+    private String bookName;
     private String author;
     private String publisher;
     private Date publishDate;
     private double price;
-    private String coverId;
-    private String category;
+    private String coverID;
+    private int categoryID;
     private String description;
     /**
      * get the book category
      * @return 
      */
-    public String getCategory() {
-        return category;
+    public int getCategoryID() {
+        return categoryID;
     }
     /**
      * set book belongs to which category
      * @param category 
      */
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
     }
     /**
      * get book id
      * @return 
      */
-    public String getId() {
-        return id;
+    public int getBookID() {
+        return bookID;
     }
     /**
      * set book id
      * @param id 
      */
-    public void setId(String id) {
-        this.id = id;
+    public void setId(int bookID) {
+        this.bookID = bookID;
     }
     /**
      * get book name
      * @return 
      */
-    public String getName() {
-        return name;
+    public String getBookName() {
+        return bookName;
     }
     /**
      * set book name
      * @param name 
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
     }
     /**
      * get book author
@@ -128,15 +128,15 @@ public class Book{
      * get cover id
      * @return cover id
      */
-    public String getCoverId() {
-        return coverId;
+    public String getCoverID() {
+        return coverID;
     }
     /**
      * set cover ID
      * @param coverId 
      */
-    public void setCoverId(String coverId) {
-        this.coverId = coverId;
+    public void setCoverId(String coverID) {
+        this.coverID = coverID;
     }
     /**
      * get description method

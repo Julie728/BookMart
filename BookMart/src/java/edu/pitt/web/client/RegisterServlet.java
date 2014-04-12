@@ -6,6 +6,7 @@
 
 package edu.pitt.web.client;
 
+import edu.pitt.service.BusinessServiceImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,8 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * register servlet
  * @author yanma
+ * @version 04.09.2014
+ * check whether username is used
  */
 public class RegisterServlet extends HttpServlet {
 
@@ -32,16 +35,25 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet register</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet register at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String username = request.getParameter("username");
+            
+            BusinessServiceImpl service = new BusinessServiceImpl();
+            if(!service.findUser(username)){
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Servlet register</title>");            
+                out.println("</head>");
+                out.println("<body>");
+                out.println("<h1>Sooooooorry!</h1>");
+                out.println("<h3>The username has been used. Please re-register another username.</h3>");
+                out.println("---><a href='/client/register.jsp'>Back to register page</a><---");
+                out.println("</body>");
+                out.println("</html>");
+            }else{
+                response.sendRedirect("/client/login.jsp");
+            }
+
         }
     }
 

@@ -74,23 +74,23 @@ public class BookServlet extends HttpServlet {
     private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         try {
-            String name = request.getParameter("name");
+            String bookName = request.getParameter("bookName");
             String author = request.getParameter("author");
             String publisher = request.getParameter("publisher");
             DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
             Date publishDate = df.parse(request.getParameter("publishDate"));
             Double price = Double.parseDouble(request.getParameter("price"));
-            String category = request.getParameter("category");
+            int categoryID = Integer.parseInt(request.getParameter("categoryID"));
             String description = request.getParameter("description");
             
             
             Book book = new Book();
-            book.setName(name);
+            book.setBookName(bookName);
             book.setAuthor(author);
             book.setPublisher(publisher);
             book.setPublishDate(publishDate);
             book.setPrice(price);
-            book.setCategory(category);
+            book.setCategoryID(categoryID);
             book.setDescription(description);
             
             BusinessServiceImpl service = new BusinessServiceImpl();

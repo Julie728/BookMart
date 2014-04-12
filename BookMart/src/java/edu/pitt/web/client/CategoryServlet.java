@@ -43,8 +43,10 @@ public class CategoryServlet extends HttpServlet {
             String name = request.getParameter("name");
             String description = request.getParameter("description");
             
+            System.out.println(name);
+            System.out.println(description);
+            
             Category category = new Category();
-            category.setId(WebUtils.makeID());
             category.setName(name);
             category.setDescription(description);
             

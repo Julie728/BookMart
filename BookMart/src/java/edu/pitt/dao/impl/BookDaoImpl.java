@@ -27,8 +27,8 @@ public class BookDaoImpl implements ObjectDAO<Book> {
     public void add(Book book) {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "insert into book (name, author, publisher, publishDate, price, coverId, category) values(?,?,?,?,?,?,?)";
-            Object[] params = {book.getName(), book.getAuthor(), book.getPublisher(), book.getPublishDate(), book.getPrice(), book.getCoverId(), book.getCategory()};
+            String sql = "insert into book (bookname, author, publisher, publishDate, price, categoryID) values(?,?,?,?,?,?,?)";
+            Object[] params = {book.getBookName(), book.getAuthor(), book.getPublisher(), book.getPublishDate(), book.getPrice(), book.getCoverID(), book.getCategoryID()};
             runner.update(sql, params);
 
         } catch (Exception e) {
@@ -69,7 +69,7 @@ public class BookDaoImpl implements ObjectDAO<Book> {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
             String sql = "delete from book where bookID=?";
-            Object[] params = {book.getId()};
+            Object[] params = {book.getBookID()};
             runner.update(sql, params);
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,9 +82,9 @@ public class BookDaoImpl implements ObjectDAO<Book> {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
             String sql = "UPDATE book SET name = ?, author = ?, publisher = ?, publishDate = ?, price = ?,"
-                    + " coverId = ?, category = ? WHERE bookID=?;";
-            Object[] params = {book.getName(), book.getAuthor(), book.getPublisher(), book.getPublishDate(),
-                book.getPrice(), book.getCoverId(), book.getCategory(), book.getId()};
+                    + " coverID = ?, category = ? WHERE bookID=?;";
+            Object[] params = {book.getBookName(), book.getAuthor(), book.getPublisher(), book.getPublishDate(),
+                book.getPrice(), book.getCoverID(), book.getCategoryID(), book.getBookID()};
             runner.update(sql, params);
         } catch (SQLException ex) {
             Logger.getLogger(BookDaoImpl.class.getName()).log(Level.SEVERE, null, ex);

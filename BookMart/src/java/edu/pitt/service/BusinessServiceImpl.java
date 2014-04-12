@@ -20,13 +20,14 @@ public class BusinessServiceImpl {
     private ObjectDAO bookDao = new BookDaoImpl();
     private ObjectDAO orderDao = new OrderDaoImpl();
     private ObjectDAO userDao = new UserDaoImpl();
+    private UserDaoImpl userDao1 = new UserDaoImpl();
 
     public void addCategory(Category category) {
         categoryDao.add(category);
     }
 
-    public Category findCategory(int id) {
-        return (Category) categoryDao.find(id);
+    public Category findCategory(int categoryID) {
+        return (Category) categoryDao.find(categoryID);
     }
 
     public List<Category> getAllCategory() {
@@ -37,8 +38,8 @@ public class BusinessServiceImpl {
         bookDao.add(book);
     }
 
-    public Book findBook(int id) {
-        return (Book) bookDao.find(id);
+    public Book findBook(int bookID) {
+        return (Book) bookDao.find(bookID);
     }
 
     public List<Book> getAllBook() {
@@ -65,8 +66,8 @@ public class BusinessServiceImpl {
         orderDao.add(order);
     }
 
-    public Order findOrder(int id) {
-        return (Order) orderDao.find(id);
+    public Order findOrder(int orderID) {
+        return (Order) orderDao.find(orderID);
     }
 
     public List<Order> getAllOrders() {
@@ -85,8 +86,13 @@ public class BusinessServiceImpl {
         userDao.add(user);
     }
 
-    public User findUser(int id) {
-        return (User) userDao.find(id);
+    public User findUser(int userID) {
+        return (User) userDao.find(userID);
+    }
+    //find user by username
+    //create userDaoImpl class object instead of ObjectDao class object
+    public boolean findUser(String userName){
+        return userDao1.find(userName);
     }
 
     public List<User> getAllUsers() {

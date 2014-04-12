@@ -4,6 +4,7 @@
     Author     : yanma
 --%>
 
+<%@page import="java.util.List"%>
 <%@page import="edu.pitt.domain.Category"%>
 <%@page import="edu.pitt.domain.Book"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -119,22 +120,22 @@
     <body>
         <h1>Add a new Book</h1>
         <form action="${pageContext.request.contextPath }/admin/BookServlet?method=add" method="post">
-            Book Name:<input type="text" name="name"><br/>
+            Book Name:<input type="text" name="booknName"><br/>
             Author:<input type="text" name="author" ><br/>
             Publisher:<input type="text" name="publisher" ><br/>
             Publish date:<b>(mm/dd/yyyy)</b><input type="text" name="publishDate" maxlength="10" size="15" onblur="checkDateFormat()"><br/>
             Price:<input type="text" name="price" ><br/>
-            Cover:<input type="file" name="cover"><br/>
-            Category:<select name="category">
+            <!--Cover:<input type="file" name="cover"><br/>-->
+            Category:<select name="categoryID">
                 <%
                     Category category = new Category();
-                    String[] categoryList = category.getAllCategory();
-                    for(String categoryName: categoryList){
-                    out.println("<option value='"+categoryName+"'>"+categoryName+"</option>");
+                    List<Category> categoryList = category.getAllCategory();
+                    for(Category category: categoryList){
+                    out.println("<option value='"+category.getId()+"'>"+category.getName()+"</option>");
                     }
                 %>
-            </select>
-            Description: <textarea rows="5" cols="80" name="description"></textarea><br/>
+            </select><br />
+            Description: <br /><textarea rows="5" cols="80" name="description"></textarea><br/>
             <input type="submit" value="Add">
         </form>
     </body>

@@ -4,6 +4,10 @@
  */
 package edu.pitt.domain;
 
+import edu.pitt.dao.impl.CategoryDaoImpl;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author jeffwan
@@ -38,9 +42,12 @@ public class Category {
         this.description = description;
     }
     
-    public String[] getAllCategory(){
+    public List<Category> getAllCategory(){
         //get all category name
-        String[] categorylist = new String[10];
+        CategoryDaoImpl categoryDao = new CategoryDaoImpl();
+        
+        List<Category> categorylist = categoryDao.getAll();
+        
         return categorylist;
     }
     

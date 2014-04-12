@@ -26,7 +26,7 @@ public class CategoryDaoImpl implements ObjectDAO<Category> {
 
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "insert into category (categoryID, name, description) values(?,?,?)";
+            String sql = "insert into app.category (categoryID, name, description) values(?,?,?)";
             Object[] params = {category.getId(), category.getName(), category.getDescription()};
             runner.update(sql, params);
 

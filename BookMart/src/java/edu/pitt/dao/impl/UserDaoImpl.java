@@ -8,7 +8,10 @@ package edu.pitt.dao.impl;
 import edu.pitt.dao.ObjectDAO;
 import edu.pitt.domain.User;
 import edu.pitt.utils.JdbcUtils;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -34,17 +37,34 @@ public class UserDaoImpl implements ObjectDAO<User> {
     }
 
     @Override
-    public User find(int id) {
+    public User find(int userID) {
         try {
 
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "select * from Users where id=?";
-            return (User) runner.query(sql, id, new BeanHandler(User.class));
+            String sql = "select * from Users where userID=?";
+            return (User) runner.query(sql, userID, new BeanHandler(User.class));
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
+    }
+    /**
+     * this method is used for find existing username when user register
+     * @param username
+     * @return boolean true for non-exist username, false for existing username
+     */
+    public boolean find(String userName){
+        try {
+            QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
+            String sql = "select * from Users where userName = '"+ userName +"'";
+            if(runner.query(sql,userName,new BeanHandler(User.class)) !=null){
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return true;
     }
 
     @Override
