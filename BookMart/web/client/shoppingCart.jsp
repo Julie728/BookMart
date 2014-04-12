@@ -17,7 +17,10 @@
                 <th>Operation</th>               
             </tr>
             <%
-                ArrayList<Book> bookList = (ArrayList<Book>) session.getAttribute("bookList");
+                
+                ArrayList<Book> bookList = new ArrayList<Book>();
+                Book book1 = new Book();
+                //ArrayList<Book> bookList = (ArrayList<Book>) session.getAttribute("bookList");
                 if (bookList == null) {
                     out.write("<p>No item is in your shopping cart</p>");
                 } else {

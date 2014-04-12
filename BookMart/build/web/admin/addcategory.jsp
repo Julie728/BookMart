@@ -14,7 +14,7 @@
     <body>
         
         <form action="${pageContext.request.contextPath }/admin/CategoryServlet?method=add" method="post">
-            Category Name:<input type="text" name="name"><br/>
+            Category Name:<input type="text" name="categoryName"><br/>
             Category Description: <textarea rows="5" cols="40" name="description"></textarea><br/>
             <input type="submit" value="Add">
         </form>
