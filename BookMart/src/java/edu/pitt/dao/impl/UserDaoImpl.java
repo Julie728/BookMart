@@ -71,7 +71,7 @@ public class UserDaoImpl implements ObjectDAO<User> {
     public List<User> getAll() {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "select * from Users;";
+            String sql = "select * from Users";
 
             return (List<User>) runner.query(sql, new BeanListHandler(User.class));
         } catch (Exception e) {

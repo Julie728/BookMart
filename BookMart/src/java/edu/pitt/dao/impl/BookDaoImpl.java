@@ -27,7 +27,7 @@ public class BookDaoImpl implements ObjectDAO<Book> {
     public void add(Book book) {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "insert into book (bookname, author, publisher, publishDate, price, categoryID) values(?,?,?,?,?,?,?)";
+            String sql = "insert into book (bookname, author, publisher, publishDate, price, coverID, categoryID) values(?,?,?,?,?,?)";
             Object[] params = {book.getBookName(), book.getAuthor(), book.getPublisher(), book.getPublishDate(), book.getPrice(), book.getCoverID(), book.getCategoryID()};
             runner.update(sql, params);
 
@@ -56,7 +56,7 @@ public class BookDaoImpl implements ObjectDAO<Book> {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
             String sql = "select * from book";
-
+            
             return (List<Book>) runner.query(sql, new BeanListHandler(Book.class));
         } catch (Exception e) {
             throw new RuntimeException(e);
