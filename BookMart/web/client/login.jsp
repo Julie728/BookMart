@@ -12,26 +12,27 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>BookMart Login</title>
+        <link rel="stylesheet" href="../bootstrap.min.css">
     </head>
-    <body>
-        <h1>Welcome</h1>
+    <body align='center'>
+        <h1 class="h1">Welcome to your Book Market</h1><br><br>
         <div>
             <form action="" method="get">
-                <p>Username</p>
-                <input type="text" id="username" name="username" placeholder="Username" /><br>
-                <p>Password</p>
-                <input type="password" id="pwd"  name="pwd" placeholder="Password" /><br>
-                <select name="usertype">
+                <label>Username: </label>
+                <input type="text" id="username" name="username" placeholder="Username" class='form-control'/><br><br>
+                <label>Password: </label>
+                <input type="password" id="pwd"  name="pwd" placeholder="Password" class='form-control'/><br><br>
+                <label>User &nbsp;type:  </label>
+                <select name="usertype" class="form-control">
                     <option name="usertype" value="client">Client</option>
                     <option name="usertype" value="admin">Administrator</option>
                 </select>
-                <br>
-                <input type="submit" value="Submit" name="submit" />
+                <br><br>
+                <input type="submit" value="Submit" name="submit" class='btn btn-default'/>&nbsp;&nbsp;&nbsp;
+                <input type='reset'  value="Reset"  name='reset'  class="btn btn-default" />
             </form>
             
-            <%
-                String username = 
-            %>
+            
         </div>
         
     </body>

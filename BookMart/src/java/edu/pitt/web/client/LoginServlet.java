@@ -6,8 +6,6 @@
 
 package edu.pitt.web.client;
 
-import edu.pitt.domain.User;
-import edu.pitt.service.BusinessServiceImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,12 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * register servlet
+ *
  * @author yanma
- * @version 04.09.2014
- * check whether username is used
  */
-public class RegisterServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,59 +30,20 @@ public class RegisterServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String method = request.getParameter("method");
-        PrintWriter out = response.getWriter();
-        if (method.equals("register")) {
-            register(request, response);
-        }
-        
-    }
-        
-        
-    private void register(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String username = request.getParameter("username");
-            String password = request.getParameter("pwd");
-            
-            BusinessServiceImpl service = new BusinessServiceImpl();
-            int userID = service.findUser(username);
-            if( userID !=0){
-                
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet register</title>"); 
-                out.println("<link rel=\"stylesheet\" href=\"../bootstrap.min.css\">");
-                out.println("</head>");
-                out.println("<body align='center'>");
-                out.println("<h1>Sooooooorry!</h1>");
-                out.println("<h3>The username has been used. Please re-register another username.</h3>");
-                out.println("<h4>---><a href='/BookMart/client/register.jsp'>Back to Register Page</a><---</h4>");
-                out.println("<img src='sorry.gif' />");
-                out.println("</body>");
-                out.println("</html>");
-            }else{
-                if(password.isEmpty()){
-                    out.println("<script language='javascript'>alert('Please enter a password')</script>");
-                }else{
-                    User user = new User();
-                    user.setUserName(username);
-                    user.setPassword(password);
-                    service.addUser(user);
-                    userID = service.findUser(username);
-                    String url = "index.jsp?userID="+userID;
-                    response.sendRedirect(url);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet LoginServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-
     }
-        
-        
-    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -27,8 +27,8 @@ public class BookDaoImpl implements ObjectDAO<Book> {
     public void add(Book book) {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "insert into book (bookname, author, publisher, publishDate, price, categoryID) values(?,?,?,?,?,?,?)";
-            Object[] params = {book.getBookName(), book.getAuthor(), book.getPublisher(), book.getPublishDate(), book.getPrice(), book.getCoverID(), book.getCategoryID()};
+            String sql = "insert into book (bookname, author, publisher, publishDate, price, categoryID) values(?,?,?,?,?,?)";
+            Object[] params = {book.getBookName(), book.getAuthor(), book.getPublisher(), book.getPublishDate(), book.getPrice(),  book.getCategoryID()};
             runner.update(sql, params);
 
         } catch (Exception e) {
@@ -82,7 +82,7 @@ public class BookDaoImpl implements ObjectDAO<Book> {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
             String sql = "UPDATE book SET name = ?, author = ?, publisher = ?, publishDate = ?, price = ?,"
-                    + " coverID = ?, category = ? WHERE bookID=?;";
+                    + " coverID = ?, category = ? WHERE bookID=?";
             Object[] params = {book.getBookName(), book.getAuthor(), book.getPublisher(), book.getPublishDate(),
                 book.getPrice(), book.getCoverID(), book.getCategoryID(), book.getBookID()};
             runner.update(sql, params);

@@ -4,6 +4,7 @@
     Author     : yanma
 --%>
 
+<%@page import="edu.pitt.dao.impl.CategoryDaoImpl"%>
 <%@page import="java.util.List"%>
 <%@page import="edu.pitt.domain.Category"%>
 <%@page import="edu.pitt.domain.Book"%>
@@ -128,10 +129,10 @@
             <!--Cover:<input type="file" name="cover"><br/>-->
             Category:<select name="categoryID">
                 <%
-                    Category category = new Category();
-                    List<Category> categoryList = category.getAllCategory();
+                    CategoryDaoImpl categoryDao = new CategoryDaoImpl();
+                    List<Category> categoryList = categoryDao.getAll();
                     for(Category category: categoryList){
-                    out.println("<option value='"+category.getId()+"'>"+category.getName()+"</option>");
+                    out.println("<option value='"+category.getCategoryID()+"'>"+category.getCategoryName()+"</option>");
                     }
                 %>
             </select><br />

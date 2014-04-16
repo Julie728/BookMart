@@ -28,8 +28,8 @@ public class UserDaoImpl implements ObjectDAO<User> {
     public void add(User user) {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "insert into Users (userID, userName, password, type) values(?,?,?,?);";
-            Object[] params = {user.getUserID(), user.getUserName(), user.getPassword(), user.getType()};
+            String sql = "insert into USERS (userName, password, type) values(?,?,?)";
+            Object[] params = {user.getUserName(), user.getPassword(), "client"};
             runner.update(sql, params);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -41,7 +41,7 @@ public class UserDaoImpl implements ObjectDAO<User> {
         try {
 
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "select * from Users where userID=?";
+            String sql = "select * from USERS where userID=?";
             return (User) runner.query(sql, userID, new BeanHandler(User.class));
 
         } catch (Exception e) {
@@ -52,26 +52,36 @@ public class UserDaoImpl implements ObjectDAO<User> {
     /**
      * this method is used for find existing username when user register
      * @param username
-     * @return boolean true for non-exist username, false for existing username
+     * @return int userID
      */
-    public boolean find(String userName){
+    public int find(String userName){
+        int userID =0;
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "select * from Users where userName = '"+ userName +"'";
-            if(runner.query(sql,userName,new BeanHandler(User.class)) !=null){
-                return false;
+            String sql = "select USERID from USERS where USERName = ?";
+            
+            if(runner.query(sql,userName,new BeanHandler(User.class))!=null){
+               
+                userID = ((User) runner.query(sql,userName,new BeanHandler(User.class))).getUserID();
+                
             }
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(UserDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return true;
+        return userID;
     }
+    
+    
+    
+    
 
     @Override
     public List<User> getAll() {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "select * from Users;";
+            String sql = "select * from USERS";
 
             return (List<User>) runner.query(sql, new BeanListHandler(User.class));
         } catch (Exception e) {
@@ -84,7 +94,7 @@ public class UserDaoImpl implements ObjectDAO<User> {
     public void delete(User user) {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "DELETE FROM Users WHERE userID = ?;";
+            String sql = "DELETE FROM USERS WHERE userID = ?";
             Object[] params = {user.getUserID()};
             runner.update(sql, params);
         } catch (Exception e) {
@@ -98,7 +108,7 @@ public class UserDaoImpl implements ObjectDAO<User> {
     public void update(User user) {
         try {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-            String sql = "update Users set userName=?, password=?, type=? where userID=?";
+            String sql = "update USERS set userName=?, password=?, type=? where userID=?";
             Object[] params = {user.getUserName(), user.getPassword(), user.getType(),user.getUserID()};
             runner.update(sql, params);
         } catch (Exception e) {

@@ -91,7 +91,7 @@ public class BusinessServiceImpl {
     }
     //find user by username
     //create userDaoImpl class object instead of ObjectDao class object
-    public boolean findUser(String userName){
+    public int findUser(String userName){
         return userDao1.find(userName);
     }
 
