@@ -83,6 +83,7 @@ public class UserDaoImpl implements ObjectDAO<User> {
             QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
             String sql = "select * from USERS";
 
+
             return (List<User>) runner.query(sql, new BeanListHandler(User.class));
         } catch (Exception e) {
             throw new RuntimeException(e);

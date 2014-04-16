@@ -13,9 +13,14 @@
     </head>
    
     
-    <frameset rows="25%,*">
-  	<frame src="${pageContext.request.contextPath }/client/head.jsp" name="head">
-  	<frame src="${pageContext.request.contextPath }/client/IndexServlet?method=getAll" name="body">
+        <frameset rows="25%,*">
+        <frame src="${pageContext.request.contextPath }/client/head.jsp" name="head">
+
+            <frameset cols="15%,*">
+                <frame src="${pageContext.request.contextPath }/client/browseLeft.jsp" name="left"/>
+                <frame src="${pageContext.request.contextPath }/client/body.jsp" name="body"/>
+            </frameset>
+
     </frameset>
     
 </html>

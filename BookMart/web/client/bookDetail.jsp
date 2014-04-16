@@ -4,6 +4,8 @@
     Author     : yanma
 --%>
 
+<%@page import="edu.pitt.domain.Book"%>
+<%@page import="edu.pitt.service.BusinessServiceImpl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +14,15 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%
+            
+            Book book = new Book();
+//            if(request.getParameter("bookID")!=null){
+                int bookID = Integer.parseInt(request.getParameter("bookID"));
+                BusinessServiceImpl bs = new BusinessServiceImpl();
+                book=bs.findBook(1);
+//            }
+        %>
+        <p><%=book.getBookName()%></p>
     </body>
 </html>

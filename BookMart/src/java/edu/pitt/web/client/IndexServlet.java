@@ -4,12 +4,15 @@
  */
 package edu.pitt.web.client;
 
+import edu.pitt.domain.Book;
+import edu.pitt.service.BusinessServiceImpl;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -20,8 +23,12 @@ public class IndexServlet extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+        System.out.println("In servlet page");
+        BusinessServiceImpl bs = new BusinessServiceImpl();
+        List<Book> books = bs.getAllBook();
+        HttpSession session = request.getSession();
+        session.setAttribute("books", books);
+        response.sendRedirect("body.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
